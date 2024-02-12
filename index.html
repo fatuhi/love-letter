@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Valentines Bebe</title>
+  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,900' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>var ml = { timelines: {}};</script>
+  <style>
+    body {
+      font: 13px "Poppins", Arial, Helvetica, sans-serif;
+      background-color: #e8c3b9;
+      color: #fff;
+      text-align: center;
+    }
+
+    .moving-letters {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 20px;
+      margin: auto;
+      height: 200px;
+    }
+
+    .heart-container {
+      display: inline-block;
+      position: relative;
+    }
+
+    .heart {
+      font-size: 3em;
+      cursor: pointer;
+    }
+
+    .letter-container {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      width: 500px;
+      height: 666px;
+    }
+
+    p{
+      color: black;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    img{
+      margin-top: 20px;
+      height: 220px;
+      width: 300px;
+    }
+   
+
+    .heartbeat {
+      position: relative;
+      animation: beat 2s linear infinite;
+    }
+
+    @keyframes beat {
+      0% {
+        transform: scale(1);
+      }
+      14% {
+        transform: scale(0.9);
+      }
+      21% {
+        transform: scale(1.1) skew(0.004turn);
+      }
+      28% {
+        transform: scale(1) skew(0.008turn);
+      }
+      35% {
+        transform: scale(1) skew(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="moving-letters">
+    <h1 class="ml2">click the heart</h1>
+
+    <div class="heart-container">
+      <div class="heartbeat heart">❤️</div>
+      <div class="letter-container">
+        <p>hey my lovely kuhî,  <br> <br> in the quiet moments, i catch myself reflecting on the beauty and joy you exude every single day.
+          <br> <br>from the moment you entered my life, everything changed. how i see the world, myself and others. 
+          <br> <br>you bring so much light and happiness and abundance of love into my life.
+          <br> <br>i often marvel at how effortlessly you understand me. sometimes even when i find it hard to understand myself. 
+          <br> <br>you never fail to make me smile, laugh the kind of laughter that makes me snort and makes my tummy hurt. i hope i bring you even a sliver of the joy you fill my days with. 
+          <br> <br>as we journey through life together, i promise to always shower you with love and kindness. i look forward to every single day, every moment, every second i get to experience you. 
+          <br> <br>    i love you, always xx
+          <br>
+        </p>
+        <audio controls>
+          <source src="iris.mp3" type="audio/mpeg">
+          
+        </audio>        
+        <img src="tom-in-love.jpeg">
+        <p>^^me every time we're on meets^^</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('.heart').click(function() {
+        // $('.heart-container, .ml2').hide();
+
+        $('.letter-container').show();
+      });
+
+      $('.ml2').each(function() {
+        $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+      });
+
+      ml.timelines["ml2"] = anime.timeline({ loop: true })
+        .add({
+          targets: '.ml2 .letter',
+          scale: [4, 1],
+          opacity: [0, 1],
+          translateZ: 0,
+          easing: "easeOutExpo",
+          duration: 950,
+          delay: function(el, i) {
+            return 70 * i;
+          }
+        }).add({
+          targets: '.ml2',
+          opacity: 0,
+          duration: 1000,
+          easing: "easeOutExpo",
+          delay: 1000
+        });
+    });
+  </script>
+</body>
+</html>
